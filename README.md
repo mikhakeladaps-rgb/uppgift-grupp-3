@@ -26,13 +26,13 @@ dotnet build
 ### Run Console App
 
 ```bash
-dotnet run --project consoleApp
+dotnet run --project AddressBook.CLI
 ```
 
 ### Run WPF App (Windows only)
 
 ```bash
-dotnet run --project wpfApp
+dotnet run --project AddressBook.WPF
 ```
 
 ---
@@ -137,21 +137,21 @@ git restore .   # alla filer
  # Konceptet med dll-projekt
  Vi har satt upp en solution med 4 projekt.
 
- **logiclib** -> detta är vårt klassbibliotek och skapar en dll-fil. Denna är inte körbar direkt som t.ex. de exe-filer som skapas i de andra projekten.
+ **AddressBook.Core** -> detta är vårt klassbibliotek och skapar en dll-fil. Denna är inte körbar direkt som t.ex. de exe-filer som skapas i de andra projekten.
  Här är lämpligt att lägga den logik som behövs som inte i sig är kopplat till hur vi "presenterar" data i antingen konsol-appen eller WPF-appen.
  De klasser och funktioner som ligger i detta projekt delas sedan till de andra projekten och blir åtkomliga därifrån
  
- **consoleApp** och **wpfApp** -> här satte vi upp en refererens till logiclib i terminalen när vi skapade våra projekt och har då tillgång till koden som ligger i dll-filen ovan.
+ **AddressBook.CLI** och **AddressBook.WPF** -> här satte vi upp en refererens till **AddressBook.Core** i terminalen när vi skapade våra projekt och har då tillgång till koden som ligger i dll-filen ovan.
  För att komma åt klasser och funktioner i dll-filen så lägger vi till
  ```bash
-using logiclib;
+using AddressBook.Core;
 ```
 överst i de filer som behöver access.
 
 **Playground**
-Detta är en konsol applikation. För att undivka onödig konflikter i koden i vår **consoleApp** så kan denna användas med fördel för snabba tester av t.ex. koden som läggs i dll-filen då denna inte går att köra direkt. Denna är inte nödvändig att pusha utan tanken är mest att använda den lokalt. Dock följer ändingar här med i *git add .* men det gör inget och skulle det bli konflikter är det mest att skriva över då detta inte är någon kod som vi ska använda i vårt färdiga arbete. Så detta projekt tar vi bort helt när vi är färdiga.
+Detta är en konsol applikation. För att undivka onödig konflikter i koden i vår **AddressBook.CLI** så kan denna användas med fördel för snabba tester av t.ex. koden som läggs i dll-filen då denna inte går att köra direkt. Denna är inte nödvändig att pusha utan tanken är mest att använda den lokalt. Dock följer ändingar här med i *git add .* men det gör inget och skulle det bli konflikter är det mest att skriva över då detta inte är någon kod som vi ska använda i vårt färdiga arbete. Så detta projekt tar vi bort helt när vi är färdiga.
 
-Projekten i detta lägen är uppsatta med detta för att demonstrera hur det ska se ut.
+Projekten i ett första läge är uppsatta med detta för att demonstrera hur det ska se ut.
 
 ---
 
@@ -167,22 +167,22 @@ dotnet new sln -n grupp3.sln
 
 ### 3. Skapade projekten
 ```bash
-dotnet new console -n consoleApp
-dotnet new classlib -n logiclib
-dotnet new wpf - wpfApp
+dotnet new console -n AddressBook.CLI
+dotnet new classlib -n AddressBook.Core
+dotnet new wpf - AddressBook.WPF
 ```
 
 ### 4. La till projekten till vår solution
 ```bash
-dotnet sln add consoleApp/consoleApp.csproj
-dotnet sln add logiclib/logiclib.csproj
-dotnet sln add wpfApp/wpfApp.csproj
+dotnet sln add AddressBook.CLI/AddressBook.CLI.csproj
+dotnet sln add AddressBook.Core/AddressBook.Core.csproj
+dotnet sln add AddressBook.WPF/AddressBook.WPF.csproj
 ```
 
 ### 5. Kopplade ihop projekten
-Så att consoleApp och wpfApp kan använda logiclib
+Så att AddressBook.CLI och AddressBook.WPF kan använda AddressBook.Core
 ```bash
-dotnet add consoleApp/consoleApp.csproj reference logiclib/logiclib.csproj
-dotnet add wpfApp/wpfApp.csproj reference logiclib/logiclib.csproj
+dotnet add AddressBook.CLI/AddressBook.CLI.csproj reference AddressBook.Core/AddressBook.Core.csproj
+dotnet add AddressBook.WPF/AddressBook.WPF.csproj reference AddressBook.Core/AddressBook.Core.csproj
 ```
 
