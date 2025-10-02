@@ -2,9 +2,9 @@
 
 This is a school group project written in **C#/.NET**. The project is organized into three parts:
 
-* **logiclib** → Class Library (all shared logic)
-* **consoleApp** → Console application (command line)
-* **wpfApp** → WPF application (Windows desktop GUI)
+* **AddressBook.Core** → Class Library (all shared logic)
+* **AddressBook.CLI** → Console application (command line)
+* **AddressBook.WPF** → WPF application (Windows desktop GUI)
 * **Playground** → Temporary project which can be used for testing of logiclib instead of doing changes to consoleApp.
 
 ---
