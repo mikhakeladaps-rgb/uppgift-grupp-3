@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "consoleApp", "consoleApp\consoleApp.csproj", "{710E7CF6-9F3A-47F0-B9CD-54786705D798}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook.CLI", "AddressBook.CLI\AddressBook.CLI.csproj", "{710E7CF6-9F3A-47F0-B9CD-54786705D798}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "logiclib", "logiclib\logiclib.csproj", "{9A4A1325-C06E-4A5C-B278-FE26816C7876}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook.Core", "AddressBook.Core\AddressBook.Core.csproj", "{9A4A1325-C06E-4A5C-B278-FE26816C7876}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpfApp", "wpfApp\wpfApp.csproj", "{A34615B3-590C-40B1-8918-A4068D85BA96}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook.WPF", "AddressBook.WPF\AddressBook.WPF.csproj", "{A34615B3-590C-40B1-8918-A4068D85BA96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Playground\Playground.csproj", "{242760D0-A43B-4D8D-89F0-81BBA581D7BA}"
 EndProject

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using AddressBook.Core;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;

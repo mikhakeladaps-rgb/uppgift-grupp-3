@@ -7,6 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-
+        <TextBlock Text="Hello World from WPF!" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
     </Grid>
 </Window>
