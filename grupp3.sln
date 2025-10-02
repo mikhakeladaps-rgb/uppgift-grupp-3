@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "logiclib", "logiclib\logicl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "wpfApp", "wpfApp\wpfApp.csproj", "{A34615B3-590C-40B1-8918-A4068D85BA96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playground", "Playground\Playground.csproj", "{242760D0-A43B-4D8D-89F0-81BBA581D7BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,8 +57,23 @@ Global
 		{A34615B3-590C-40B1-8918-A4068D85BA96}.Release|x64.Build.0 = Release|Any CPU
 		{A34615B3-590C-40B1-8918-A4068D85BA96}.Release|x86.ActiveCfg = Release|Any CPU
 		{A34615B3-590C-40B1-8918-A4068D85BA96}.Release|x86.Build.0 = Release|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Debug|x64.Build.0 = Debug|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Debug|x86.Build.0 = Debug|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Release|x64.ActiveCfg = Release|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Release|x64.Build.0 = Release|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Release|x86.ActiveCfg = Release|Any CPU
+		{242760D0-A43B-4D8D-89F0-81BBA581D7BA}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5A610F96-698A-4F80-9325-FBE0A25A47F9}
 	EndGlobalSection
 EndGlobal
