@@ -55,3 +55,17 @@ nunit-*.xml
 /.vs/grupp3/CopilotIndices/17.14.1231.31060/CodeChunks.db
 /.vs/grupp3/CopilotIndices/17.14.1231.31060
 /.vs/grupp3/FileContentIndex
+
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+DocumentLayout.json
+
+
+# Visual code
+.vscode/
