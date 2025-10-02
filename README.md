@@ -1,3 +1,3 @@
 # uppgift-grupp-3
 
-## Hej hej
+## Detta är vår grupp skoluppgift där vi ska skapa en anteckningsbok där vi ska kunna lägga upp namn, gatuadress osv. 
