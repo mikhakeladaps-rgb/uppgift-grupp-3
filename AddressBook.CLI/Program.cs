@@ -10,6 +10,9 @@ namespace AddressBook.CLI
             d.Name = "Hello, World from CLI!";
 
             Console.WriteLine(d.Name);
+
+            // skriv ut meny
+            UIHandler.ShowMenu();
         }
     }
 }
