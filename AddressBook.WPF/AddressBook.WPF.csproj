@@ -12,4 +12,8 @@
     <ProjectReference Include="..\AddressBook.CLI\AddressBook.CLI.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Styles\" />
+  </ItemGroup>
+
 </Project>

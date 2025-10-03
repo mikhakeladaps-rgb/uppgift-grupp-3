@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:wpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Background="{StaticResource gradientBlue}"
+        Title="AddressBook.WPF" Height="450" Width="800">
     <Grid>
         <TextBlock Text="Hello World from WPF!" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
     </Grid>
