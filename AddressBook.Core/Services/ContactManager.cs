@@ -3,6 +3,7 @@ public class ContactManager	// hanterar en "lista" med Contact
     public ContactManager()
     {
         Console.WriteLine("This is from ContactManager");
+        contacts = PersistenceHelper.LoadContacts();
     }
 
     // ska innehålla en List<Contact> som vi arbetar med
@@ -13,6 +14,13 @@ public class ContactManager	// hanterar en "lista" med Contact
     {
         contacts.Add(contact);
         Console.WriteLine($"Contact {contact.Name} has been added");
+        PersistenceHelper.SaveContacts(contacts);
+    }
+    // skapa kontakt i konsollen
+    public void AddContactFromConsole()
+    {
+        var contact = AddContactConsole.CreateContactFromConsole();
+        AddContact(contact);
     }
     // uppdatera
     // ta bort
