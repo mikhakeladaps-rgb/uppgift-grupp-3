@@ -11,6 +11,20 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty] public string titel;
     #endregion
 
+    #region Properties
+    private string _searchText;
+    public string SearchText
+    {
+        get { return _searchText; }
+        set
+        {
+            _searchText = value;
+            OnPropertyChanged();
+            // Refresh filtering here
+        }
+    }
+    #endregion
+
     #region Constructor
     public MainViewModel()
     {

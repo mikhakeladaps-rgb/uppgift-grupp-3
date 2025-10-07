@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:wpfApp"
         mc:Ignorable="d"
         Background="{StaticResource gradientBlue}"
-        Title="AddressBook.WPF" Height="450" Width="800">
+        Title="AddressBook.WPF" Height="770" Width="900">
 
     <Window.DataContext>
         <vm:MainViewModel/>
@@ -34,6 +34,14 @@
                     Margin="150 0 0 0"
                     Width="120" Height="30" Content="Avsluta"
                     Command="{Binding QuitCommand}"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 10 0 10">
+            <TextBlock Text="🔍Sök:" VerticalAlignment="Center" Margin="8,0" Foreground="White" FontSize="20"/>
+            <TextBox BorderThickness="0" FontSize="20"
+                     Width="200" Height="30"
+                     Padding="4,0"
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
     </Grid>
 </Window>
