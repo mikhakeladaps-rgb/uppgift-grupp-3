@@ -3,10 +3,16 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AddressBook.WPF.ViewModels"
         xmlns:local="clr-namespace:wpfApp"
         mc:Ignorable="d"
         Background="{StaticResource gradientBlue}"
         Title="AddressBook.WPF" Height="450" Width="800">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -20,7 +26,14 @@
 
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2"
                     HorizontalAlignment="Center">
-            
+            <Button Style="{StaticResource BlueButton}"
+                    Margin="20 0 0 0"
+                    Width="120" Height="30" Content="Ny kontakt"
+                    Command="{Binding NewContactCommand}"/>
+            <Button Style="{StaticResource BlackButton}"
+                    Margin="150 0 0 0"
+                    Width="120" Height="30" Content="Avsluta"
+                    Command="{Binding QuitCommand}"/>
         </StackPanel>
     </Grid>
 </Window>
