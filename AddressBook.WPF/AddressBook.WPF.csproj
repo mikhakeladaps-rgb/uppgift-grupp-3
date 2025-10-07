@@ -9,11 +9,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Page Remove="Styles\Buttons.xaml" />
+    <Page Remove="Styles\Colors.xaml" />
+    <Page Remove="Styles\Effects.xaml" />
+    <Page Remove="Styles\Gradients.xaml" />
+    <Page Remove="Styles\TabItems.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AddressBook.CLI\AddressBook.CLI.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Styles\" />
+    <Resource Include="Styles\Buttons.xaml" />
+    <Resource Include="Styles\Colors.xaml" />
+    <Resource Include="Styles\Effects.xaml" />
+    <Resource Include="Styles\Gradients.xaml" />
+    <Resource Include="Styles\TabItems.xaml" />
   </ItemGroup>
 
 </Project>
