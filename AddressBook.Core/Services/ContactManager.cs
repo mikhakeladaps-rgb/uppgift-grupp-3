@@ -23,6 +23,25 @@ public class ContactManager	// hanterar en "lista" med Contact
         AddContact(contact);
     }
     // uppdatera
+    public void UpdateContactFromConsole()
+    {
+        bool changed = UpdateContactConsole.RunInteractive(contacts);
+        if (changed)
+        {
+            PersistenceHelper.SaveContacts(contacts);
+        }
+    }
+
+    public bool UpdateContactByEmail(string emailToFind, ContactList updated)
+    {
+        bool ok = UpdateContactConsole.TryUpdateByEmail(contacts, emailToFind, updated);
+        if (ok)
+        {
+            PersistenceHelper.SaveContacts(contacts);
+            Console.WriteLine($"Contact with email: {emailToFind} has been updated.");
+        }
+        return ok;
+    }
     // ta bort
     // söka
     //hämta ut alla kontakter

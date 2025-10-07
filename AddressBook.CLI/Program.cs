@@ -18,6 +18,19 @@ namespace AddressBook.CLI
             // Lägg till några kontakter
             manager.AddContactFromConsole();
 
+            //Uppdatera en kontakt från konsollen
+            manager.UpdateContactFromConsole();
+            //Uppdatera kontakt från "kod"
+            var updatedContact = new ContactList
+            {
+                Name = "Elin Nyström",          
+                Email = "elin@example.com",      
+                Phone = "070-999 88 77",         
+                Street = "Storgatan 5",
+                City = "Malmö",
+                PostalCode = "21111"
+            };
+            manager.UpdateContactByEmail("Elin@example.com", updatedContact);
             // Visa alla kontakter
             manager.ShowAllContacts();
         }
