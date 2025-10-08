@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AddressBook.WPF.Controls;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Windows;
 using System.Windows.Data;
@@ -36,7 +37,19 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     public void NewContact()
     {
+        var vm = new NewContactViewModel();
         //  öppna nytt fönster för att lägga till kontakt
+        NewContactWnd wnd = new NewContactWnd()
+        {
+            DataContext = vm
+        };
+        wnd.ShowDialog();
+
+        if (vm.WasSaved)
+        {
+            // TODO: Spara kontakten
+            // vm.NewContact
+        }
     }
 
     [RelayCommand]
