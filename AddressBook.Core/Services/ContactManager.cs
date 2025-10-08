@@ -43,6 +43,30 @@ public class ContactManager	// hanterar en "lista" med Contact
         return ok;
     }
     // ta bort
+    public void DeleteContactFromConsole()
+    {
+        bool deleted = DeleteContactConsole.RunInteractive(contacts);
+        if (deleted)
+        {
+            PersistenceHelper.SaveContacts(contacts); 
+            Console.WriteLine("Contact was removed and the list was updated.");
+        }
+    }
+
+    public bool DeleteContactByEmail(string emailToFind)
+    {
+        bool ok = DeleteContactConsole.TryDeleteByEmail(contacts, emailToFind);
+        if (ok)
+        {
+            PersistenceHelper.SaveContacts(contacts);
+            Console.WriteLine($"Contact with email: {emailToFind} has been removed.");
+        }
+        else
+        {
+            Console.WriteLine($"No contact found with this email address: {emailToFind}");
+        }
+        return ok;
+    }
     // söka
     //hämta ut alla kontakter
     public void ShowAllContacts()

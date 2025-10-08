@@ -31,6 +31,13 @@ namespace AddressBook.CLI
                 PostalCode = "21111"
             };
             manager.UpdateContactByEmail("Elin@example.com", updatedContact);
+
+            //Ta bort en kontakt via konsollen
+            manager.DeleteContactFromConsole();
+            //Ta bort en kontakt fron "kod"
+            var removed = manager.DeleteContactByEmail("Elin@example.com");
+            Console.WriteLine($"Removed? {removed}");
+
             // Visa alla kontakter
             manager.ShowAllContacts();
         }
