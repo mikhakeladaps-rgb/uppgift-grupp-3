@@ -1,9 +1,12 @@
-public class Contact	// "data" för en person
-{
-	public string? Name { get; set; }
-	// gatuadress
-	// postnummer
-	// postort
-	// telefon, vi nöjer oss med ett telefonnummer
-	// epost
-}
+namespace AddressBook.Core.Models;
+
+    public class Contact
+    {
+        public string Name { get; set; }
+        public string Street { get; set; }
+        public string PostalCode { get; set; }
+        public string City { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Email { get; set; }
+
+    }
