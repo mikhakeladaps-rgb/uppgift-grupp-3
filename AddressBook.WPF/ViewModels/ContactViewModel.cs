@@ -10,10 +10,10 @@ public partial class ContactViewModel : ObservableObject
 
     #region Observable properties
     [ObservableProperty] private string? name;
-    [ObservableProperty] private string? streetName;
-    [ObservableProperty] private string? zipCode;
+    [ObservableProperty] private string? street;
+    [ObservableProperty] private string? postalCode;
     [ObservableProperty] private string? city;
-    [ObservableProperty] private string? phone;
+    [ObservableProperty] private string? phoneNumber;
     [ObservableProperty] private string? email;
 
     [ObservableProperty] private bool isChanged;  // Changed flagga - något är ändrat i en kontakt
@@ -29,56 +29,41 @@ public partial class ContactViewModel : ObservableObject
         _contact = contact;
         _isInitializing = true;
 
-        // TODO: uppdatera med rätt namn på Contact-egenskaper
         // Initiera ViewModel-egenskaper från modellen
-        //Name = contact.Name;
-        //StreetName = contact.StreetName;
-        //ZipCode = contact.ZipCode;
-        //City = contact.City;
-        //Phone = contact.Phone;
-        //Email = contact.Email;
+        Name = contact.Name;
+        Street = contact.Street;
+        PostalCode = contact.PostalCode;
+        City = contact.City;
+        PhoneNumber = contact.PhoneNumber;
+        Email = contact.Email;
 
         _isInitializing = false;
     }
     #endregion
 
+    private void MarkChanged()
+    {
+        if (!_isInitializing) IsChanged = true;
+    }
+
     #region Partial-metoder som triggar IsChanged
-    partial void OnNameChanged(string? value)
-    {
-        if (!_isInitializing) IsChanged = true;
-    }
-    partial void OnStreetNameChanged(string? value)
-    {
-        if (!_isInitializing) IsChanged = true;
-    }
-    partial void OnZipCodeChanged(string? value)
-    {
-        if (!_isInitializing) IsChanged = true;
-    }
-    partial void OnCityChanged(string? value)
-    {
-        if (!_isInitializing) IsChanged = true;
-    }
-    partial void OnPhoneChanged(string? value)
-    {
-        if (!_isInitializing) IsChanged = true;
-    }
-    partial void OnEmailChanged(string? value)
-    {
-        if (!_isInitializing) IsChanged = true;
-    }
+    partial void OnNameChanged(string? value) => MarkChanged();
+    partial void OnStreetChanged(string? value) => MarkChanged();
+    partial void OnPostalCodeChanged(string? value) => MarkChanged();
+    partial void OnCityChanged(string? value) => MarkChanged();
+    partial void OnPhoneNumberChanged(string? value) => MarkChanged();
+    partial void OnEmailChanged(string? value) => MarkChanged();
     #endregion
 
     // Uppdatera den ursprungliga Contact-modellen
     public Contact ToModel()
     {
-        // TODO: uppdatera med rätt namn på Contact-egenskaper
-        //_contact.Name = Name;
-        //_contact.StreetName = StreetName;
-        //_contact.ZipCode = ZipCode;
-        //_contact.City = City;
-        //_contact.Phone = Phone;
-        //_contact.Email = Email;
+        _contact.Name = Name;
+        _contact.Street = Street;
+        _contact.PostalCode = PostalCode;
+        _contact.City = City;
+        _contact.PhoneNumber = PhoneNumber;
+        _contact.Email = Email;
         return _contact;
     }
 }
