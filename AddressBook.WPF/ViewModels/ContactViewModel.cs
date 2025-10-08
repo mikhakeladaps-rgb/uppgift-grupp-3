@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using AddressBook.Core.Models;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 public partial class ContactViewModel : ObservableObject
 {
