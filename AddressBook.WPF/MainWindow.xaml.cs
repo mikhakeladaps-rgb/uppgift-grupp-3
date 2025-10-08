@@ -22,3 +22,5 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 }
+
+// TODO: Sätt style på ScrollViewer i Listbox, MainWindow.xaml

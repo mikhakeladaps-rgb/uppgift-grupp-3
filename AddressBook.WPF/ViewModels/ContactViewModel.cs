@@ -4,7 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 public partial class ContactViewModel : ObservableObject
 {
     #region Fields
-    private bool _isInitializing;       // för att undvika onPropertyChanged under initiering
+    private bool _isInitializing;       // för att undvika OnPropertyChanged under initiering
     private readonly Contact _contact;  // originaldata
     #endregion
 
@@ -41,11 +41,6 @@ public partial class ContactViewModel : ObservableObject
     }
     #endregion
 
-    private void MarkChanged()
-    {
-        if (!_isInitializing) IsChanged = true;
-    }
-
     #region Partial-metoder som triggar IsChanged
     partial void OnNameChanged(string? value) => MarkChanged();
     partial void OnStreetChanged(string? value) => MarkChanged();
@@ -54,6 +49,11 @@ public partial class ContactViewModel : ObservableObject
     partial void OnPhoneNumberChanged(string? value) => MarkChanged();
     partial void OnEmailChanged(string? value) => MarkChanged();
     #endregion
+
+    private void MarkChanged()
+    {
+        if (!_isInitializing) IsChanged = true;
+    }
 
     // Uppdatera den ursprungliga Contact-modellen
     public Contact ToModel()

@@ -1,6 +1,8 @@
 ﻿using AddressBook.WPF.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Data;
 
@@ -10,6 +12,8 @@ public partial class MainViewModel : ObservableObject
 {
     #region Observable properties
     [ObservableProperty] public string titel;
+    [ObservableProperty] private ICollectionView contactsView;
+    [ObservableProperty] private ContactViewModel? selectedContact;
     #endregion
 
     #region Properties
@@ -26,12 +30,50 @@ public partial class MainViewModel : ObservableObject
     }
     #endregion
 
+    private readonly ContactManager contactManager = new ContactManager();
+    public ObservableCollection<ContactViewModel> Contacts { get; } = new();
+
     #region Constructor
     public MainViewModel()
     {
         Titel = "AdressBok";
+
+        // TODO: Att uppdatera när ContactManager är klar.
+
+        // ladda kontakter i contactManager
+
+        // lägg till ContactViewModel för varje Contact som laddats
+
+        // ContactsView = CollectionViewSource.GetDefaultView(Contacts);
+
+        // lägg till filtreringsmetoden
+        // ContactsView.Filter = FilterContacts;
     }
     #endregion
+
+    private bool FilterContacts(object obj)
+    {
+        if (obj is not ContactViewModel vm) return false;
+        if (string.IsNullOrWhiteSpace(SearchText)) return true;
+
+        var text = SearchText.ToLower();
+        return (vm.Name?.ToLower().Contains(text) == true)
+            || (vm.City?.ToLower().Contains(text) == true);
+    }
+
+    // Spara automatiskt när användaren byter kontakt om något ändrats
+    partial void OnSelectedContactChanged(ContactViewModel? oldValue, ContactViewModel? newValue)
+    {
+        if (oldValue != null && oldValue.IsChanged)
+        {
+            SaveContact(oldValue);
+        }
+    }
+
+    private void SaveContact(ContactViewModel contact)
+    {
+        // TODO: Spara kontakt
+    }
 
     #region RelayCommands
     [RelayCommand]

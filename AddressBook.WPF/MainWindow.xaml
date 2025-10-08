@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:AddressBook.WPF.ViewModels"
+        xmlns:ctrl="clr-namespace:AddressBook.WPF.Controls"
         xmlns:local="clr-namespace:wpfApp"
         mc:Ignorable="d"
         Background="{StaticResource gradientBlue}"
@@ -36,12 +37,62 @@
                     Command="{Binding QuitCommand}"/>
         </StackPanel>
 
+        <!-- Search box -->
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 10 0 10">
             <TextBlock Text="🔍Sök:" VerticalAlignment="Center" Margin="8,0" Foreground="White" FontSize="20"/>
             <TextBox BorderThickness="0" FontSize="20"
-                     Width="200" Height="30"
-                     Padding="4,0"
-                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+             Width="200" Height="30"
+             Padding="4,0"
+             Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
         </StackPanel>
+
+        <!-- Contact List Master -->
+        <ListBox ItemsSource="{Binding ContactsView}"
+                 SelectedItem="{Binding SelectedContact}"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 Grid.Row="2"
+                 Margin="0,0,0,-6"
+                 Padding="0"
+                 VirtualizingStackPanel.IsVirtualizing="False"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+            <!-- Style scrollviewer-->
+            <ListBox.Resources></ListBox.Resources>
+
+            <!-- Style for items -->
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,6"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Margin="0"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ctrl:ContactDetailsCtrl/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+        <!-- Contact List Detail -->
+        <Grid Grid.Column="1" Grid.Row="2" Margin="20">
+            <ContentControl Content="{Binding SelectedContact}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <ctrl:ContactDetailsCtrl/>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+        </Grid>
+        
     </Grid>
 </Window>
