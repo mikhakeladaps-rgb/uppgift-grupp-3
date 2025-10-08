@@ -38,6 +38,9 @@ namespace AddressBook.CLI
             var removed = manager.DeleteContactByEmail("Elin@example.com");
             Console.WriteLine($"Removed? {removed}");
 
+            //Sök efter kontakt
+            SearchContact.RunInteractive(manager);
+            
             // Visa alla kontakter
             manager.ShowAllContacts();
         }

@@ -68,6 +68,18 @@ public class ContactManager	// hanterar en "lista" med Contact
         return ok;
     }
     // söka
+    public List<ContactList> SearchContacts(string term)
+    {
+        term = term.Trim();
+        return [.. contacts.Where(c =>
+            (c.Name?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (c.City?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (c.Email?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (c.Phone?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (c.Street?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (c.PostalCode?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false)
+        )];
+    }
     //hämta ut alla kontakter
     public void ShowAllContacts()
     {
