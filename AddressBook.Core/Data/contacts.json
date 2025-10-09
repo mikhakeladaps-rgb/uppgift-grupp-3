@@ -1,0 +1,162 @@
+[
+    {
+        "namn": "Maria Berg",
+        "gatuadress": "Industrivägen 37",
+        "postnummer": "993 51",
+        "postort": "Uppsala",
+        "telefon": "070-440 64 41",
+        "epost": "maria.berg@example.com"
+    },
+    {
+        "namn": "Sara Andersson",
+        "gatuadress": "Industrivägen 33",
+        "postnummer": "644 88",
+        "postort": "Malmö",
+        "telefon": "076-392 15 83",
+        "epost": "sara.andersson@example.com"
+    },
+    {
+        "namn": "Mattias Johansson",
+        "gatuadress": "Ringvägen 29",
+        "postnummer": "305 97",
+        "postort": "Malmö",
+        "telefon": "071-948 57 10",
+        "epost": "mattias.johansson@example.com"
+    },
+    {
+        "namn": "Oskar Nilsson",
+        "gatuadress": "Storgatan 16",
+        "postnummer": "279 35",
+        "postort": "Örebro",
+        "telefon": "079-662 22 39",
+        "epost": "oskar.nilsson@example.com"
+    },
+    {
+        "namn": "Anna Svensson",
+        "gatuadress": "Köpmangatan 24",
+        "postnummer": "111 47",
+        "postort": "Malmö",
+        "telefon": "072-706 78 85",
+        "epost": "anna.svensson@example.com"
+    },
+    {
+        "namn": "Pontus Berg",
+        "gatuadress": "Köpmangatan 31",
+        "postnummer": "339 79",
+        "postort": "Norrköping",
+        "telefon": "075-699 61 75",
+        "epost": "pontus.berg@example.com"
+    },
+    {
+        "namn": "Pontus Johansson",
+        "gatuadress": "Tallvägen 46",
+        "postnummer": "882 84",
+        "postort": "Malmö",
+        "telefon": "074-495 71 87",
+        "epost": "pontus.johansson@example.com"
+    },
+    {
+        "namn": "Olivia Berg",
+        "gatuadress": "Tallvägen 26",
+        "postnummer": "761 67",
+        "postort": "Stockholm",
+        "telefon": "078-137 15 96",
+        "epost": "olivia.berg@example.com"
+    },
+    {
+        "namn": "Erik Nilsson",
+        "gatuadress": "Industrivägen 11",
+        "postnummer": "629 60",
+        "postort": "Jönköping",
+        "telefon": "071-536 31 19",
+        "epost": "erik.nilsson@example.com"
+    },
+    {
+        "namn": "Andreas Larsson",
+        "gatuadress": "Liljegatan 45",
+        "postnummer": "650 17",
+        "postort": "Örebro",
+        "telefon": "074-357 48 94",
+        "epost": "andreas.larsson@example.com"
+    },
+    {
+        "namn": "Lisa Nilsson",
+        "gatuadress": "Storgatan 14",
+        "postnummer": "954 59",
+        "postort": "Örebro",
+        "telefon": "076-901 51 22",
+        "epost": "lisa.nilsson@example.com"
+    },
+    {
+        "namn": "Karl Johansson",
+        "gatuadress": "Ekvägen 12",
+        "postnummer": "611 75",
+        "postort": "Malmö",
+        "telefon": "075-227 18 10",
+        "epost": "karl.johansson@example.com"
+    },
+    {
+        "namn": "Sofie Nilsson",
+        "gatuadress": "Köpmangatan 27",
+        "postnummer": "692 44",
+        "postort": "Helsingborg",
+        "telefon": "079-710 98 16",
+        "epost": "sofie.nilsson@example.com"
+    },
+    {
+        "namn": "Johan Johansson",
+        "gatuadress": "Köpmangatan 38",
+        "postnummer": "450 95",
+        "postort": "Stockholm",
+        "telefon": "073-751 78 86",
+        "epost": "johan.johansson@example.com"
+    },
+    {
+        "namn": "Elin Lindberg",
+        "gatuadress": "Tallvägen 24",
+        "postnummer": "433 19",
+        "postort": "Jönköping",
+        "telefon": "073-576 58 49",
+        "epost": "elin.lindberg@example.com"
+    },
+    {
+        "namn": "Olivia Nilsson",
+        "gatuadress": "Storgatan 46",
+        "postnummer": "395 83",
+        "postort": "Västerås",
+        "telefon": "076-702 95 68",
+        "epost": "olivia.nilsson@example.com"
+    },
+    {
+        "namn": "David Holm",
+        "gatuadress": "Ekvägen 10",
+        "postnummer": "591 36",
+        "postort": "Jönköping",
+        "telefon": "078-901 86 42",
+        "epost": "david.holm@example.com"
+    },
+    {
+        "namn": "Pontus Holm",
+        "gatuadress": "Kvarngatan 31",
+        "postnummer": "304 89",
+        "postort": "Göteborg",
+        "telefon": "075-719 26 63",
+        "epost": "pontus.holm@example.com"
+    },
+    {
+        "namn": "Elin Eriksson",
+        "gatuadress": "Tallvägen 40",
+        "postnummer": "348 15",
+        "postort": "Örebro",
+        "telefon": "078-941 28 56",
+        "epost": "elin.eriksson@example.com"
+    },
+    {
+        "namn": "Nora Persson",
+        "gatuadress": "Kvarngatan 25",
+        "postnummer": "966 46",
+        "postort": "Linköping",
+        "telefon": "072-754 45 20",
+        "epost": "nora.persson@example.com"
+    }
+]
