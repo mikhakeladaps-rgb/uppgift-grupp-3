@@ -1,0 +1,178 @@
+[
+  {
+    "Name": "Maria Berg",
+    "Street": "Industriv\u00E4gen 37",
+    "PostalCode": "993 51",
+    "City": "Uppsala",
+    "PhoneNumber": "070-440 64 41",
+    "Email": "maria.berg@example.com"
+  },
+  {
+    "Name": "Sara Andersson",
+    "Street": "Industriv\u00E4gen 33",
+    "PostalCode": "644 88",
+    "City": "Malm\u00F6",
+    "PhoneNumber": "076-392 15 83",
+    "Email": "sara.andersson@example.com"
+  },
+  {
+    "Name": "Mattias Johansson",
+    "Street": "Ringv\u00E4gen 29",
+    "PostalCode": "305 97",
+    "City": "Malm\u00F6",
+    "PhoneNumber": "071-948 57 10",
+    "Email": "mattias.johansson@example.com"
+  },
+  {
+    "Name": "Oskar Nilsson",
+    "Street": "Storgatan 16",
+    "PostalCode": "279 35",
+    "City": "\u00D6rebro",
+    "PhoneNumber": "079-662 22 39",
+    "Email": "oskar.nilsson@example.com"
+  },
+  {
+    "Name": "Anna Svensson",
+    "Street": "K\u00F6pmangatan 24",
+    "PostalCode": "111 47",
+    "City": "Malm\u00F6",
+    "PhoneNumber": "072-706 78 85",
+    "Email": "anna.svensson@example.com"
+  },
+  {
+    "Name": "Pontus Berg",
+    "Street": "K\u00F6pmangatan 31",
+    "PostalCode": "339 79",
+    "City": "Norrk\u00F6ping",
+    "PhoneNumber": "075-699 61 75",
+    "Email": "pontus.berg@example.com"
+  },
+  {
+    "Name": "Pontus Johansson",
+    "Street": "Tallv\u00E4gen 46",
+    "PostalCode": "882 84",
+    "City": "Malm\u00F6",
+    "PhoneNumber": "074-495 71 87",
+    "Email": "pontus.johansson@example.com"
+  },
+  {
+    "Name": "Olivia Berg",
+    "Street": "Tallv\u00E4gen 26",
+    "PostalCode": "761 67",
+    "City": "Stockholm",
+    "PhoneNumber": "078-137 15 96",
+    "Email": "olivia.berg@example.com"
+  },
+  {
+    "Name": "Erik Nilsson",
+    "Street": "Industriv\u00E4gen 11",
+    "PostalCode": "629 60",
+    "City": "J\u00F6nk\u00F6ping",
+    "PhoneNumber": "071-536 31 19",
+    "Email": "erik.nilsson@example.com"
+  },
+  {
+    "Name": "Andreas Larsson",
+    "Street": "Liljegatan 45",
+    "PostalCode": "650 17",
+    "City": "\u00D6rebro",
+    "PhoneNumber": "074-357 48 94",
+    "Email": "andreas.larsson@example.com"
+  },
+  {
+    "Name": "Lisa Nilsson",
+    "Street": "Storgatan 14",
+    "PostalCode": "954 59",
+    "City": "\u00D6rebro",
+    "PhoneNumber": "076-901 51 22",
+    "Email": "lisa.nilsson@example.com"
+  },
+  {
+    "Name": "Karl Johansson",
+    "Street": "Ekv\u00E4gen 12",
+    "PostalCode": "611 75",
+    "City": "Malm\u00F6",
+    "PhoneNumber": "075-227 18 10",
+    "Email": "karl.johansson@example.com"
+  },
+  {
+    "Name": "Sofie Nilsson",
+    "Street": "K\u00F6pmangatan 27",
+    "PostalCode": "692 44",
+    "City": "Helsingborg",
+    "PhoneNumber": "079-710 98 16",
+    "Email": "sofie.nilsson@example.com"
+  },
+  {
+    "Name": "Johan Johansson",
+    "Street": "K\u00F6pmangatan 38",
+    "PostalCode": "450 95",
+    "City": "Stockholm",
+    "PhoneNumber": "073-751 78 86",
+    "Email": "johan.johansson@example.com"
+  },
+  {
+    "Name": "Elin Lindberg",
+    "Street": "Tallv\u00E4gen 24",
+    "PostalCode": "433 19",
+    "City": "J\u00F6nk\u00F6ping",
+    "PhoneNumber": "073-576 58 49",
+    "Email": "elin.lindberg@example.com"
+  },
+  {
+    "Name": "Olivia Nilsson",
+    "Street": "Storgatan 46",
+    "PostalCode": "395 83",
+    "City": "V\u00E4ster\u00E5s",
+    "PhoneNumber": "076-702 95 68",
+    "Email": "olivia.nilsson@example.com"
+  },
+  {
+    "Name": "David Holm",
+    "Street": "Ekv\u00E4gen 10",
+    "PostalCode": "591 36",
+    "City": "J\u00F6nk\u00F6ping",
+    "PhoneNumber": "078-901 86 42",
+    "Email": "david.holm@example.com"
+  },
+  {
+    "Name": "Pontus Holm",
+    "Street": "Kvarngatan 31",
+    "PostalCode": "304 89",
+    "City": "G\u00F6teborg",
+    "PhoneNumber": "075-719 26 63",
+    "Email": "pontus.holm@example.com"
+  },
+  {
+    "Name": "Elin Eriksson",
+    "Street": "Tallv\u00E4gen 40",
+    "PostalCode": "348 15",
+    "City": "\u00D6rebro",
+    "PhoneNumber": "078-941 28 56",
+    "Email": "elin.eriksson@example.com"
+  },
+  {
+    "Name": "Nora Persson",
+    "Street": "Kvarngatan 25",
+    "PostalCode": "966 46",
+    "City": "Link\u00F6ping",
+    "PhoneNumber": "072-754 45 20",
+    "Email": "nora.persson@example.com"
+  },
+  {
+    "Name": "Sara Bengtsson",
+    "Street": "Saras V\u00E4g 10",
+    "PostalCode": "233 05",
+    "City": "Stockholm",
+    "PhoneNumber": "0735 49 18 15",
+    "Email": "Sara.Bengtsson@gmail.com"
+  },
+  {
+    "Name": "Elin Nystr\u00F6m",
+    "Street": "Storgatan 5",
+    "PostalCode": "21111",
+    "City": "Malm\u00F6",
+    "PhoneNumber": "070-999 88 77",
+    "Email": "elin@example.com"
+  }
+]

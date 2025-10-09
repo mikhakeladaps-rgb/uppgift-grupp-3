@@ -1,18 +1,12 @@
-﻿using AddressBook.Core;
-
-namespace AddressBook.CLI
+﻿namespace AddressBook.CLI
 {
     public class Program
     {
         static void Main(string[] args)
         {
-            Dummy d = new Dummy();
-            d.Name = "Hello, World from CLI!";
-
-            Console.WriteLine(d.Name);
-
             // skriv ut meny
             UIHandler.ShowMenu();
+
         }
     }
 }
