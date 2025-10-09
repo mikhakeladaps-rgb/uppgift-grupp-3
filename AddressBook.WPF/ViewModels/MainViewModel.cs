@@ -1,4 +1,5 @@
-﻿using AddressBook.WPF.Controls;
+﻿using AddressBook.Core.Services;
+using AddressBook.WPF.Controls;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
@@ -41,7 +42,7 @@ public partial class MainViewModel : ObservableObject
         // TODO: Att uppdatera när ContactManager är klar.
 
         // ladda kontakter i contactManager
-
+        
         // lägg till ContactViewModel för varje Contact som laddats
 
         // ContactsView = CollectionViewSource.GetDefaultView(Contacts);

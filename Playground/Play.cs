@@ -1,4 +1,5 @@
 ﻿using AddressBook.Core;
+using AddressBook.Core.Services;
 
 namespace AddressBook.CLI
 {
@@ -6,10 +7,8 @@ namespace AddressBook.CLI
     {
         static void Main(string[] args)
         {
-            Dummy d = new Dummy();
-            d.Name = "Hello, World from Playground!";
-
-            Console.WriteLine(d.Name);
+            ContactManager contactManager = new ContactManager();
+            contactManager.ShowAllContacts();
         }
     }
 }
