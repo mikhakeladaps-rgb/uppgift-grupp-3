@@ -58,7 +58,51 @@
                  ScrollViewer.VerticalScrollBarVisibility="Auto">
 
             <!-- Style scrollviewer-->
-            <ListBox.Resources></ListBox.Resources>
+            <ListBox.Resources>
+                <!-- Style för ScrollBar -->
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Width" Value="6"/>
+                    <!-- smal scrollbar -->
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid x:Name="Root" Background="Transparent" Width="{TemplateBinding Width}">
+                                    <Track x:Name="PART_Track" 
+                                        IsDirectionReversed="true"
+                                        Focusable="false">
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.LineUpCommand"
+                                                Opacity="0" IsEnabled="False"/>
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.LineDownCommand"
+                                                Opacity="0" IsEnabled="False"/>
+                                        </Track.IncreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Thumb Background="#888"
+                                                   Opacity="0.5"
+                                                   Margin="0,2"/>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Root" Property="Background" Value="#EEE"/>
+                                        <Setter TargetName="PART_Track" Property="Thumb.Opacity" Value="0.8"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <!-- Dölj horisontell scrollbar -->
+                <Style TargetType="ScrollViewer">
+                    <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+                    <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                </Style>
+            </ListBox.Resources>
 
             <!-- Style for items -->
             <ListBox.ItemContainerStyle>
