@@ -103,6 +103,18 @@ git push
 git pull
 ```
 
+### Push to main / merge
+```bash
+git checkout main
+git pull origin main        # uppdatera main så du har senaste
+git merge feature/your-name-of-the-branch-to-merge-into-main  #vi har valt våra namne så t.ex. git merge feature/Micke
+git push origin main
+```
+   #### Viktigt 
+   - att "main" är uppdaterat enligt ovan INNAN merge.
+   - Efter merge (INNAN PUSH) behöver eventuella konflikter lösas. Borde vara minimalt med tanke på vårt upplägg.
+   - Testa koden lokalt INNAN push så att vårt main-spår alltid fungerar utan krascher
+   
 ### View status & log
 
 ```bash
