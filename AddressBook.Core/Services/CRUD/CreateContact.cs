@@ -1,6 +1,8 @@
+using AddressBook.Core.Models;
+
 public static class AddContactConsole
 {
-    public static ContactList CreateContactFromConsole()
+    public static Contact CreateContactFromConsole()
     {
         Console.WriteLine("Add a new contact");
         string GetInput(string fieldName)
@@ -16,13 +18,13 @@ public static class AddContactConsole
             return input.Trim();
 
         }
-            var contact = new ContactList
+            var contact = new Contact
         {
             Name = GetInput("Name"),
             Street = GetInput("Street"),
             PostalCode = GetInput("PostalCode"),
             City = GetInput("City"),
-            Phone = GetInput("Phone"),
+            PhoneNumber = GetInput("PhoneNumber"),
             Email = GetInput("Email")
         };
         return contact;

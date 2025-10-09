@@ -1,3 +1,5 @@
+using AddressBook.Core.Models;
+
 public class ContactManager	// hanterar en "lista" med Contact
 {
     public ContactManager()
@@ -7,10 +9,10 @@ public class ContactManager	// hanterar en "lista" med Contact
     }
 
     // ska innehålla en List<Contact> som vi arbetar med
-    private List<ContactList> contacts = new List<ContactList>();
+    private List<Contact> contacts = new List<Contact>();
 
     // spara
-    public void AddContact(ContactList contact)
+    public void AddContact(Contact contact)
     {
         contacts.Add(contact);
         Console.WriteLine($"Contact {contact.Name} has been added");
@@ -32,7 +34,7 @@ public class ContactManager	// hanterar en "lista" med Contact
         }
     }
 
-    public bool UpdateContactByEmail(string emailToFind, ContactList updated)
+    public bool UpdateContactByEmail(string emailToFind, Contact updated)
     {
         bool ok = UpdateContactConsole.TryUpdateByEmail(contacts, emailToFind, updated);
         if (ok)
@@ -68,14 +70,14 @@ public class ContactManager	// hanterar en "lista" med Contact
         return ok;
     }
     // söka
-    public List<ContactList> SearchContacts(string term)
+    public List<Contact> SearchContacts(string term)
     {
         term = term.Trim();
         return [.. contacts.Where(c =>
             (c.Name?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.City?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.Email?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
-            (c.Phone?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
+            (c.PhoneNumber?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.Street?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.PostalCode?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false)
         )];
@@ -86,7 +88,7 @@ public class ContactManager	// hanterar en "lista" med Contact
         Console.WriteLine("List of all contacts:");
         foreach (var contact in contacts)
         {
-            Console.WriteLine($"{contact.Name}, {contact.Email}, {contact.Phone}");
+            Console.WriteLine($"{contact.Name}, {contact.Email}, {contact.PhoneNumber}");
         }
     }
 }

@@ -1,3 +1,5 @@
+using AddressBook.Core.Models;
+
 public static class UpdateContactConsole
 {
     private static string Prompt(string label, string current)
@@ -7,20 +9,20 @@ public static class UpdateContactConsole
         return string.IsNullOrWhiteSpace(input) ? current : input.Trim();
     }
 
-    public static ContactList BuildUpdated(ContactList existing)
+    public static Contact BuildUpdated(Contact existing)
     {
-        return new ContactList
+        return new Contact
         {
             Name = Prompt("Name", existing.Name),
             Street = Prompt("Street", existing.Street),
             PostalCode = Prompt("PostalCode", existing.PostalCode),
             City = Prompt("City", existing.City),
-            Phone = Prompt("Phone", existing.Phone),
+            PhoneNumber = Prompt("Phone", existing.PhoneNumber),
             Email = Prompt("Email", existing.Email),
         };
     }
     //Hitta kontakt via e-post (case-insensitive)
-    private static int FindIndexByEmail(List<ContactList> contacts, string email)
+    private static int FindIndexByEmail(List<Contact> contacts, string email)
     {
         return contacts.FindIndex(c =>
             c.Email.Equals(email, StringComparison.OrdinalIgnoreCase));
@@ -28,7 +30,7 @@ public static class UpdateContactConsole
 
     // kör hela interaktiva flödet för att uppdatera listan
     // Returnerar true om något uppdaterades.
-    public static bool RunInteractive(List<ContactList> contacts)
+    public static bool RunInteractive(List<Contact> contacts)
     {
         Console.Write("Write the email for the contact you want to update: ");
         var email = Console.ReadLine()?.Trim() ?? "";
@@ -72,7 +74,7 @@ public static class UpdateContactConsole
     }
 
     //  enbart logik utan konsol (om du vill uppdatera från koden och inte konsollen)
-    public static bool TryUpdateByEmail(List<ContactList> contacts, string emailToFind, ContactList updated)
+    public static bool TryUpdateByEmail(List<Contact> contacts, string emailToFind, Contact updated)
     {
         var index = FindIndexByEmail(contacts, emailToFind);
         if (index == -1) return false;

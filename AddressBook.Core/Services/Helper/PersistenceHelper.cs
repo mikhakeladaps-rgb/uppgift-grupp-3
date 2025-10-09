@@ -1,4 +1,5 @@
 using System.Text.Json;
+using AddressBook.Core.Models;
 
 // en helper för att spara/läsa kontakter till en JSON-fil. Kommer tas bort och bytas ut mot FileService.  
 public static class PersistenceHelper
@@ -10,7 +11,7 @@ public static class PersistenceHelper
     private static readonly string DataFilePath = Path.Combine(DataDirectory, "contacts.json");
 
     // TODO: När FileService finns: ersätt med FileService.Save(contacts)
-    public static void SaveContacts(List<ContactList> contacts)
+    public static void SaveContacts(List<Contact> contacts)
     {
         try
         {
@@ -27,21 +28,21 @@ public static class PersistenceHelper
     }
 
      // TODO: När FileService finns: ersätt med contacts = FileService.Load()
-    public static List<ContactList> LoadContacts()
+    public static List<Contact> LoadContacts()
     {
         try
         {
             if (!File.Exists(DataFilePath))
-                return new List<ContactList>();
+                return new List<Contact>();
 
             var json = File.ReadAllText(DataFilePath);
-            var loaded = JsonSerializer.Deserialize<List<ContactList>>(json);
-            return loaded ?? new List<ContactList>();
+            var loaded = JsonSerializer.Deserialize<List<Contact>>(json);
+            return loaded ?? new List<Contact>();
         }
         catch (Exception ex)
         {
             Console.WriteLine($"[WARNING] could not read contacts: {ex.Message}");
-            return new List<ContactList>();
+            return new List<Contact>();
         }
     }
 }

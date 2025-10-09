@@ -16,6 +16,6 @@ public static class SearchContact
 
         Console.WriteLine($"Matches ({results.Count}):");
         foreach (var c in results)
-            Console.WriteLine($"{c.Name} | {c.Email} | {c.Phone} | {c.Street}, {c.PostalCode} {c.City}");
+            Console.WriteLine($"{c.Name} | {c.Email} | {c.PhoneNumber} | {c.Street}, {c.PostalCode} {c.City}");
     }
 }

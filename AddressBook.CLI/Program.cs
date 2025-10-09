@@ -1,4 +1,5 @@
 ﻿using AddressBook.Core;
+using AddressBook.Core.Models;
 
 namespace AddressBook.CLI
 {
@@ -21,11 +22,11 @@ namespace AddressBook.CLI
             //Uppdatera en kontakt från konsollen
             manager.UpdateContactFromConsole();
             //Uppdatera kontakt från "kod"
-            var updatedContact = new ContactList
+            var updatedContact = new Contact
             {
                 Name = "Elin Nyström",          
                 Email = "elin@example.com",      
-                Phone = "070-999 88 77",         
+                PhoneNumber = "070-999 88 77",         
                 Street = "Storgatan 5",
                 City = "Malmö",
                 PostalCode = "21111"

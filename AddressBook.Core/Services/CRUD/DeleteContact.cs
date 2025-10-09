@@ -1,8 +1,10 @@
+using AddressBook.Core.Models;
+
 public static class DeleteContactConsole
 {
     // Försöker ta bort en kontakt genom att matcha e-post (case-insensitive).
     // Returnerar true om borttagen, annars false.
-    public static bool TryDeleteByEmail(List<ContactList> contacts, string emailToFind)
+    public static bool TryDeleteByEmail(List<Contact> contacts, string emailToFind)
     {
         if (string.IsNullOrWhiteSpace(emailToFind))
             return false;
@@ -19,7 +21,7 @@ public static class DeleteContactConsole
 
     // Interaktivt flöde i konsolen: fråga efter e-post, visa enkel bekräftelse och ta bort.
     // Returnerar true om något togs bort.
-    public static bool RunInteractive(List<ContactList> contacts)
+    public static bool RunInteractive(List<Contact> contacts)
     {
         Console.Write("Write a email to remove: ");
         var email = Console.ReadLine() ?? "";
