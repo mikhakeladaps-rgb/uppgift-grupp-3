@@ -1,21 +1,24 @@
-public static class SearchContact
+namespace AddressBook.Core.Services
 {
-    // Enkel interaktiv sökning i konsolen. Använder ContactManager.SearchContacts.
-    public static void RunInteractive(ContactManager manager)
+    public static class SearchContact
     {
-        Console.Write("Search (for example 'elin' or 'Malmö'): ");
-        var term = Console.ReadLine() ?? "";
-
-        var results = manager.SearchContacts(term);
-
-        if (results.Count == 0)
+        // Enkel interaktiv sökning i konsolen. Använder ContactManager.SearchContacts.
+        public static void RunInteractive(ContactManager manager)
         {
-            Console.WriteLine("No matches.");
-            return;
-        }
+            Console.Write("Search (for example 'elin' or 'Malmö'): ");
+            var term = Console.ReadLine() ?? "";
 
-        Console.WriteLine($"Matches ({results.Count}):");
-        foreach (var c in results)
-            Console.WriteLine($"{c.Name} | {c.Email} | {c.PhoneNumber} | {c.Street}, {c.PostalCode} {c.City}");
+            var results = manager.SearchContacts(term);
+
+            if (results.Count == 0)
+            {
+                Console.WriteLine("No matches.");
+                return;
+            }
+
+            Console.WriteLine($"Matches ({results.Count}):");
+            foreach (var c in results)
+                Console.WriteLine($"{c.Name} | {c.Email} | {c.PhoneNumber} | {c.Street}, {c.PostalCode} {c.City}");
+        }
     }
 }

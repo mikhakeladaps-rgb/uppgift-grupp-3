@@ -1,50 +1,52 @@
 using System.Text.Json;
 using AddressBook.Core.Models;
-public class FileService	// hantera läsning och skrivning till textfil
+
+namespace AddressBook.Core.Services
 {
-    private readonly string _dataFilePath;
-    public FileService(string? customPath = null)
+    public class FileService    // hantera läsning och skrivning till textfil
     {
-        _dataFilePath = !string.IsNullOrWhiteSpace(customPath)
-            ? customPath!
-            : Path.GetFullPath(Path.Combine(
-                AppContext.BaseDirectory, "../../../../AddressBook.Core/Data/contacts.json"
-              ));
-    }
-    
-    // load from file
-
-    public List<Contact> Load()
-    {
-        try
+        private readonly string _dataFilePath;
+        public FileService(string? customPath = null)
         {
-            if (!File.Exists(_dataFilePath)) return new List<Contact>();
-            // läs filen
-            var json = File.ReadAllText(_dataFilePath);
-            var contacts = JsonSerializer.Deserialize<List<Contact>>(json);
-            return contacts ?? new List<Contact>();
+            _dataFilePath = !string.IsNullOrWhiteSpace(customPath)
+                ? customPath!
+                : Path.Combine(AppContext.BaseDirectory, "Data", "contacts.json");
         }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"[WARNING] Could not read file: {ex.Message}");
-            return new List<Contact>();
-        }
-    }
 
-    // save to file
-    public void Save(List<Contact> contacts)
-    {
-        try
-        {
-            var dir = Path.GetDirectoryName(_dataFilePath)!;
-            if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+        // load from file
 
-            var json = JsonSerializer.Serialize(contacts, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(_dataFilePath, json);
-        }
-        catch (Exception ex)
+        public List<Contact> Load()
         {
-            Console.WriteLine($"[WARNING] Could not save file: {ex.Message}");
+            try
+            {
+                if (!File.Exists(_dataFilePath)) return new List<Contact>();
+                // läs filen
+                var json = File.ReadAllText(_dataFilePath);
+                var contacts = JsonSerializer.Deserialize<List<Contact>>(json);
+                return contacts ?? new List<Contact>();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[WARNING] Could not read file: {ex.Message}");
+                return new List<Contact>();
+            }
+        }
+
+        // save to file
+        public void Save(List<Contact> contacts)
+        {
+            try
+            {
+                var dir = Path.GetDirectoryName(_dataFilePath)!;
+                if (!Directory.Exists(dir)) Directory.CreateDirectory(dir);
+
+                var json = JsonSerializer.Serialize(contacts, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(_dataFilePath, json);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[WARNING] Could not save file: {ex.Message}");
+            }
         }
     }
 }
