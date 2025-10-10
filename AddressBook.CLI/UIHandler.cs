@@ -1,5 +1,5 @@
 using System;
-
+using AddressBook.Core.Models;
 public static class UIHandler
 {
     public static void ShowMenu()
@@ -18,6 +18,7 @@ public static class UIHandler
         Console.WriteLine();
         Console.WriteLine("--- " + title + " ---");
     }
+
 
     public static void Print(string text)
     {
