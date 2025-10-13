@@ -1,5 +1,4 @@
-﻿using AddressBook.Core;
-
+﻿using AddressBook.Core.Services;
 namespace AddressBook.CLI
 {
     public class Program
@@ -54,7 +53,7 @@ namespace AddressBook.CLI
 
         static void ShowAllContacts()
         {
-     //       UIHandler.ShowAllContacts(contactManager.contacts)
+            //       UIHandler.ShowAllContacts(contactManager.contacts)
         }
         static void SearchContacts()
         {
@@ -67,33 +66,33 @@ namespace AddressBook.CLI
 
         static void AddContact()
         {
-           // UIHandler.Clear();
-           // UIHandler.ShowTitle("Lägg till kontakt");
-           // string name = UIHandler.GetInput("Namn: ");
-           // string phone = UIHandler.GetInput("Telefon: ");
-           // string email = UIHandler.GetInput("E-post: ");
-           // UIHandler.Print($"(Här ska vi spara {name}, {phone}, {email})");
-           // UIHandler.Wait();
+            // UIHandler.Clear();
+            // UIHandler.ShowTitle("Lägg till kontakt");
+            // string name = UIHandler.GetInput("Namn: ");
+            // string phone = UIHandler.GetInput("Telefon: ");
+            // string email = UIHandler.GetInput("E-post: ");
+            // UIHandler.Print($"(Här ska vi spara {name}, {phone}, {email})");
+            // UIHandler.Wait();
         }
 
 
         static void UpdateContacts()
         {
-          //  UIHandler.Clear();
-          //  UIHandler.ShowTitle("Ta bort kontakt");
-           // string name = UIHandler.GetInput("Ange namn att ta bort: ");
-           // UIHandler.Print($"(Här ska vi ta bort '{name}')");
-           // UIHandler.Wait();
+            //  UIHandler.Clear();
+            //  UIHandler.ShowTitle("Ta bort kontakt");
+            // string name = UIHandler.GetInput("Ange namn att ta bort: ");
+            // UIHandler.Print($"(Här ska vi ta bort '{name}')");
+            // UIHandler.Wait();
 
 
-        }    
+        }
         static void RemoveContact()
         {
-           // UIHandler.Clear();
-           // UIHandler.ShowTitle("Ta bort kontakt");
-           // string name = UIHandler.GetInput("Ange namn att ta bort: ");
-           // UIHandler.Print($"(Här ska vi ta bort '{name}')");
-             // UIHandler.Wait();
+            // UIHandler.Clear();
+            // UIHandler.ShowTitle("Ta bort kontakt");
+            // string name = UIHandler.GetInput("Ange namn att ta bort: ");
+            // UIHandler.Print($"(Här ska vi ta bort '{name}')");
+            // UIHandler.Wait();
         }
     }
 }
