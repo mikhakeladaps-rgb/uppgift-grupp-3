@@ -13,6 +13,40 @@ namespace AddressBook.Core.Services
             _fileService = fileService;
             Console.WriteLine("This is from ContactManager");
         }
+
+        // public List<Contact> Contacts { get; set; } = new List<Contact>();
+
+        // public ContactManager()
+        // {
+        //     LoadContacts();
+        // }
+
+        // public void LoadContacts()
+        // {
+        //     // bara läsa från fil och sortera på Id
+        // }
+
+        // public void SaveContacts()
+        // {
+        //     // bara spara till fil
+        // }
+
+        // public void AddContact(Contact contact)
+        // {
+        //     // lägg till kontakt i listan
+        // }
+
+        // public void UpdateContact(Contact contact)
+        // {
+        //     // uppdatera kontakt i listan
+        // }
+
+        // public void DeleteContact(Contact contact)
+        // {
+        //     // ta bort kontakt från listan
+        // }
+
+
         // spara
         public void AddContact(Contact contact)
         {
@@ -74,7 +108,9 @@ namespace AddressBook.Core.Services
             }
             return ok;
         }
+
         // söka
+        // BEHÅLL DENNA SOM DEN ÄR
         public List<Contact> SearchContacts(string term)
         {
             var contacts = _fileService.Load();
@@ -90,6 +126,7 @@ namespace AddressBook.Core.Services
             (c.PostalCode?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false)
         )];
         }
+
         //hämta ut alla kontakter
         public void ShowAllContacts()
         {
