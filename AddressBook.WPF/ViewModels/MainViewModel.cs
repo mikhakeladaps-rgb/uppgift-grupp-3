@@ -110,6 +110,26 @@ public partial class MainViewModel : ObservableObject
     }
 
     [RelayCommand]
+    private void DeleteContact()
+    {
+        if (SelectedContact != null)
+        {
+            if (MessageBox.Show($"Vill du verkligen radera {SelectedContact.Name}?",
+                                "Bekräfta", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                // Ta bort från contactManager
+                contactManager.Contacts.Remove(SelectedContact.ToModel()); // om SelectedContact är ViewModel med Model-property
+                contactManager.SaveContacts(); // eller motsvarande metod för att spara
+
+                // Uppdatera ObservableCollection i VM
+                Contacts.Remove(SelectedContact);
+
+                SelectedContact = null;
+            }
+        }
+    }
+
+    [RelayCommand]
     public void Quit()
     {
         Application.Current.Shutdown();

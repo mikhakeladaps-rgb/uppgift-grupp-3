@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:AddressBook.WPF.ViewModels"
         xmlns:ctrl="clr-namespace:AddressBook.WPF.Controls"
+        xmlns:conv="clr-namespace:AddressBook.WPF.Converters"
         xmlns:local="clr-namespace:wpfApp"
         mc:Ignorable="d"
         Background="{StaticResource gradientBlue}"
@@ -13,6 +14,10 @@
     <Window.DataContext>
         <vm:MainViewModel/>
     </Window.DataContext>
+
+    <Window.Resources>
+        <conv:NullToBoolConverter x:Key="NullToBoolConverter" />
+    </Window.Resources>
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -128,7 +133,7 @@
         </ListBox>
 
         <!-- Contact List Detail -->
-        <Grid Grid.Column="1" Grid.Row="2" Margin="20">
+        <StackPanel Grid.Column="1" Grid.Row="2" Margin="20">
             <ContentControl Content="{Binding SelectedContact}">
                 <ContentControl.ContentTemplate>
                     <DataTemplate>
@@ -136,7 +141,13 @@
                     </DataTemplate>
                 </ContentControl.ContentTemplate>
             </ContentControl>
-        </Grid>
+
+            <Button Style="{StaticResource RedButton}" Content="Radera kontakt"
+        HorizontalAlignment="Left"
+        Width="120" Height="30" Margin="160,0,0,0"
+        Command="{Binding DataContext.DeleteContactCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+        IsEnabled="{Binding DataContext.SelectedContact, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource NullToBoolConverter}}" />
+        </StackPanel>
         
     </Grid>
 </Window>
