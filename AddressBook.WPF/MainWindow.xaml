@@ -9,7 +9,7 @@
         xmlns:local="clr-namespace:wpfApp"
         mc:Ignorable="d"
         Background="{StaticResource gradientBlue}"
-        Title="AddressBook.WPF" Height="770" Width="900">
+        Title="AddressBook.WPF" Height="780" Width="900">
 
     <Window.DataContext>
         <vm:MainViewModel/>
@@ -21,6 +21,7 @@
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="60" />
             <RowDefinition Height="*"/>
@@ -30,7 +31,12 @@
             <ColumnDefinition Width="3*" />
         </Grid.ColumnDefinitions>
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2"
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2"
+                   Text="{Binding Titel}"
+                   Foreground="White"
+                   FontSize="34"
+                   HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2"
                     HorizontalAlignment="Center">
             <Button Style="{StaticResource BlueButton}"
                     Margin="20 0 0 0"
@@ -43,7 +49,7 @@
         </StackPanel>
 
         <!-- Search box -->
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 10 0 10">
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0 10 0 10">
             <TextBlock Text="🔍Sök:" VerticalAlignment="Center" Margin="8,0" Foreground="White" FontSize="20"/>
             <TextBox BorderThickness="0" FontSize="20"
              Width="200" Height="30"
@@ -56,7 +62,7 @@
                  SelectedItem="{Binding SelectedContact}"
                  Background="Transparent"
                  BorderThickness="0"
-                 Grid.Row="2"
+                 Grid.Row="3"
                  Margin="0,0,0,-6"
                  Padding="0"
                  VirtualizingStackPanel.IsVirtualizing="False"
@@ -133,7 +139,7 @@
         </ListBox>
 
         <!-- Contact List Detail -->
-        <StackPanel Grid.Column="1" Grid.Row="2" Margin="20">
+        <StackPanel Grid.Column="1" Grid.Row="3" Margin="20">
             <ContentControl Content="{Binding SelectedContact}">
                 <ContentControl.ContentTemplate>
                     <DataTemplate>

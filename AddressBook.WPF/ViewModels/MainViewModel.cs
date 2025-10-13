@@ -37,7 +37,7 @@ public partial class MainViewModel : ObservableObject
     #region Constructor
     public MainViewModel()
     {
-        Titel = "AdressBok";
+        Titel = "Adressbok";
 
         contactManager.LoadContacts();
 
