@@ -39,16 +39,15 @@ public partial class MainViewModel : ObservableObject
     {
         Titel = "AdressBok";
 
-        // TODO: Att uppdatera när ContactManager är klar.
+        contactManager.LoadContacts();
 
-        // ladda kontakter i contactManager
-        
-        // lägg till ContactViewModel för varje Contact som laddats
+        foreach (var contact in contactManager.Contacts)
+        {
+            Contacts.Add(new ContactViewModel(contact));
+        }
 
-        // ContactsView = CollectionViewSource.GetDefaultView(Contacts);
-
-        // lägg till filtreringsmetoden
-        // ContactsView.Filter = FilterContacts;
+        ContactsView = CollectionViewSource.GetDefaultView(Contacts);
+        ContactsView.Filter = FilterContacts; ;
     }
     #endregion
 

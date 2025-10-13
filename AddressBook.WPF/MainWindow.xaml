@@ -121,7 +121,7 @@
 
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <ctrl:ContactDetailsCtrl/>
+                    <ctrl:ContactCardCtrl DataContext="{Binding}" />
                 </DataTemplate>
             </ListBox.ItemTemplate>
 
