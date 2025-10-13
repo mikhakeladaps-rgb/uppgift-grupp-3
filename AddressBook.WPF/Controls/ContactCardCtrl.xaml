@@ -10,7 +10,7 @@
     <Border Padding="8" Margin="4" Background="#f8f8f8" CornerRadius="8">
         <StackPanel>
             <TextBlock Text="{Binding Name}" FontWeight="Bold" />
-            <TextBlock Text="{Binding Phone}" Foreground="Gray" />
+            <TextBlock Text="{Binding PhoneNumber}" Foreground="Gray" />
             <TextBlock Text="{Binding Email}" Foreground="Gray" />
         </StackPanel>
     </Border>

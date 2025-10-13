@@ -72,7 +72,12 @@ public partial class MainViewModel : ObservableObject
 
     private void SaveContact(ContactViewModel contact)
     {
-        // TODO: Spara kontakt
+        if (contact is null) return;
+        if (!contact.IsChanged) return;
+
+        contact.IsChanged = false;
+        contact.ToModel();
+        contactManager.SaveContacts();
     }
 
     #region RelayCommands
