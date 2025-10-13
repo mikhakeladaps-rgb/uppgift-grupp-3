@@ -7,8 +7,7 @@ namespace AddressBook.CLI
     {
         static void Main(string[] args)
         {
-            ContactManager contactManager = new ContactManager();
-            contactManager.ShowAllContacts();
+            
         }
     }
 }
