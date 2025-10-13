@@ -3,7 +3,7 @@ using AddressBook.Core.Models;
 
 public static class UIHandler
 {
-    public static void ShowMenu()
+    public static int ShowMenu()
     {
         Console.WriteLine("=== KONTAKTER ===");
         Console.WriteLine("1. Visa alla kontakter");
@@ -13,8 +13,24 @@ public static class UIHandler
         Console.WriteLine("5. Uppdatera kontakt");
         Console.WriteLine("6. Avsluta");
         Console.Write("Välj ett alternativ: ");
+        return ValidateMenuChoice(1, 6);
     }
-
+    private static int ValidateMenuChoice(int min, int max)
+    {
+        while (true)
+        {
+         string? input = Console.ReadLine();
+            if (int.TryParse(input, out int choice) && choice >= min && choice <= max)
+            {
+                return choice;
+            }
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Ogiltigt val. Vänligen ange ett nummer mellan {min} och {max}: ");
+            Console.ResetColor();
+            return 0;
+        }
+    }  
     public static void ShowTitle(string title)
     {
         Console.WriteLine();
@@ -90,6 +106,17 @@ public static class UIHandler
         Console.Write(question + ": ");
         return Console.ReadLine() ?? string.Empty;
 
+    }
+    public static int AskForId(string question)
+    {
+        Console.Write(question + ": ");
+        while (true)
+        {
+            var input = Console.ReadLine();
+            if (int.TryParse(input, out int id) && id > 0)
+                return id;
+            Console.Write("Ogiltigt val. Vänligen ange ett nummer: ");
+        }
     }
     public static bool Confirm(string question)
     {

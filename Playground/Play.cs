@@ -6,10 +6,7 @@ namespace AddressBook.CLI
     {
         static void Main(string[] args)
         {
-            Dummy d = new Dummy();
-            d.Name = "Hello, World from Playground!";
-
-            Console.WriteLine(d.Name);
+            
         }
     }
 }
