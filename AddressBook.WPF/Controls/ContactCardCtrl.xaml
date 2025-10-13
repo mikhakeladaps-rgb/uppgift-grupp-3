@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:AddressBook.WPF.Controls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
     <Border Padding="8" Margin="4" Background="#f8f8f8" CornerRadius="8">
         <StackPanel>
             <TextBlock Text="{Binding Name}" FontWeight="Bold" />

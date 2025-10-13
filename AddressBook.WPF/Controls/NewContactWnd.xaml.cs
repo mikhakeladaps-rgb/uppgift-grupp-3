@@ -20,17 +20,28 @@ namespace AddressBook.WPF.Controls
     /// </summary>
     public partial class NewContactWnd : Window
     {
-        public NewContactViewModel ViewModel => (NewContactViewModel)DataContext;
-
         public NewContactWnd()
         {
             InitializeComponent();
 
-            Loaded += (_, _) =>
+            Loaded += (s, e) =>
             {
                 if (DataContext is NewContactViewModel vm)
-                    vm.RequestClose += () => this.Close();
+                {
+                    // Koppla bara en gång
+                    vm.RequestClose -= OnRequestClose;
+                    vm.RequestClose += OnRequestClose;
+                }
             };
+        }
+
+        private void OnRequestClose()
+        {
+            if (DataContext is NewContactViewModel vm)
+            {
+                DialogResult = vm.WasSaved;
+            }
+            Close();
         }
     }
 }

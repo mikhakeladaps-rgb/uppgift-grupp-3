@@ -26,8 +26,9 @@ public partial class NewContactViewModel : ObservableObject
 
     #region Relay commands
     [RelayCommand]
-    public void Save()
+    public void SaveNewContact()
     {
+        // Enkel validering
         if (string.IsNullOrWhiteSpace(NewContact.Name) ||
         string.IsNullOrWhiteSpace(NewContact.Street) ||
         string.IsNullOrWhiteSpace(NewContact.PostalCode) ||
@@ -35,16 +36,12 @@ public partial class NewContactViewModel : ObservableObject
         string.IsNullOrWhiteSpace(NewContact.PhoneNumber) ||
         string.IsNullOrWhiteSpace(NewContact.Email))
         {
-            MessageBox.Show("Alla fält måste fyllas i innan du sparar.", "Fel", MessageBoxButton.OK, MessageBoxImage.Warning);
+            System.Windows.MessageBox.Show("Fyll i alla obligatoriska fält.");
             return;
         }
 
-        // Stäng fönstret
         WasSaved = true;
-        if (RequestClose != null)
-        {
-            RequestClose?.Invoke();
-        }
+        RequestClose?.Invoke();
     }
 
     [RelayCommand]

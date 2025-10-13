@@ -69,6 +69,7 @@ namespace AddressBook.CLI
             int nextId = Enumerable.Range(1, int.MaxValue)
             .Except(contactManager.Contacts.Select(c => c.Id))
             .First();
+
             var contact = new Contact
             {
                 Id = nextId,

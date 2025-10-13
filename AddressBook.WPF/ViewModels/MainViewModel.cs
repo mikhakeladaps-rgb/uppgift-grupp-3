@@ -26,7 +26,7 @@ public partial class MainViewModel : ObservableObject
         {
             _searchText = value;
             OnPropertyChanged();
-            // Refresh filtering here
+            ContactsView.Refresh();
         }
     }
     #endregion
@@ -84,18 +84,28 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     public void NewContact()
     {
-        var vm = new NewContactViewModel();
-        //  öppna nytt fönster för att lägga till kontakt
-        NewContactWnd wnd = new NewContactWnd()
-        {
-            DataContext = vm
-        };
-        wnd.ShowDialog();
+        //var wnd = new NewContactWnd();
+        //var vm = (NewContactViewModel)wnd.DataContext;
 
-        if (vm.WasSaved)
+        var vm = new NewContactViewModel();
+        var wnd = new NewContactWnd { DataContext = vm };
+
+        bool? result = wnd.ShowDialog();
+
+        if (result == true)
         {
-            // TODO: Spara kontakten
-            // vm.NewContact
+            // Användaren klickade på Spara
+            int nextId = Enumerable.Range(1, int.MaxValue)
+            .Except(contactManager.Contacts.Select(c => c.Id))
+            .First();
+            vm.NewContact.Id = nextId;
+
+            contactManager.Contacts.Add(vm.NewContact);
+            contactManager.SaveContacts();
+            var newVm = new ContactViewModel(vm.NewContact);
+            Contacts.Add(newVm);
+            ContactsView.Refresh();
+            SelectedContact = newVm;
         }
     }
 

@@ -24,5 +24,50 @@ namespace AddressBook.WPF.Controls
         {
             InitializeComponent();
         }
+
+        public static readonly DependencyProperty SaveCommandProperty =
+        DependencyProperty.Register(nameof(SaveCommand), typeof(ICommand), typeof(ContactDetailsCtrl));
+
+        public ICommand? SaveCommand
+        {
+            get => (ICommand?)GetValue(SaveCommandProperty);
+            set => SetValue(SaveCommandProperty, value);
+        }
+
+        private void UserControl_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter || e.Key == Key.Tab)
+            {
+                CommitAndSave();
+            }
+        }
+
+        private void CommitAndSave()
+        {
+            // Uppdatera alla TextBox-bindings innan vi sparar
+            foreach (var tb in FindVisualChildren<TextBox>(this))
+            {
+                var binding = BindingOperations.GetBindingExpression(tb, TextBox.TextProperty);
+                binding?.UpdateSource();
+            }
+
+            if (DataContext is ContactViewModel vm && vm.IsChanged && SaveCommand?.CanExecute(vm) == true)
+            {
+                SaveCommand.Execute(vm);
+            }
+        }
+
+        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj == null) yield break;
+            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+            {
+                var child = VisualTreeHelper.GetChild(depObj, i);
+                if (child is T t) yield return t;
+
+                foreach (var childOfChild in FindVisualChildren<T>(child))
+                    yield return childOfChild;
+            }
+        }
     }
 }
