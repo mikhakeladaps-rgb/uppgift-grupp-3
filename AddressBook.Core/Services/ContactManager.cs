@@ -15,6 +15,7 @@ namespace AddressBook.Core.Services
         }
 
         // public List<Contact> Contacts { get; set; } = new List<Contact>();
+        // public Contact GetContactById(int id) => Contacts.FirstOrDefault(c => c.Id == id)!;
 
         // public ContactManager()
         // {
