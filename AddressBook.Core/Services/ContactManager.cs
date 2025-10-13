@@ -1,3 +1,4 @@
+using System.Diagnostics.Contracts;
 using AddressBook.Core.Models;
 
 namespace AddressBook.Core.Services
@@ -6,112 +7,46 @@ namespace AddressBook.Core.Services
     {
         private readonly FileService _fileService;
 
-        public ContactManager() : this(new FileService()) { }
+        public List<Contact> Contacts { get; set; } = new List<Contact>();
+        public Contact GetContactById(int id) => Contacts.FirstOrDefault(c => c.Id == id)!;
+         public ContactManager()
+         {
+             LoadContacts();
+         }
 
-        public ContactManager(FileService fileService)
+         public void LoadContacts()
         {
-            _fileService = fileService;
-            Console.WriteLine("This is from ContactManager");
-        }
+            // bara läsa från fil och sortera på Id
+            var loaded = _fileService.Load();
+            var list = (loaded ?? new List<Contact>()).OrderBy(x => x.Id);
+            Contacts.Clear();
+            foreach (var contact in list)
+            {
+                Contacts.Add(contact);
+            }
 
-        // public List<Contact> Contacts { get; set; } = new List<Contact>();
-        // public Contact GetContactById(int id) => Contacts.FirstOrDefault(c => c.Id == id)!;
+         }
 
-        // public ContactManager()
-        // {
-        //     LoadContacts();
-        // }
-
-        // public void LoadContacts()
-        // {
-        //     // bara läsa från fil och sortera på Id
-        // }
-
-        // public void SaveContacts()
-        // {
-        //     // bara spara till fil
-        // }
-
-        // public void AddContact(Contact contact)
-        // {
-        //     // lägg till kontakt i listan
-        // }
-
-        // public void UpdateContact(Contact contact)
-        // {
-        //     // uppdatera kontakt i listan
-        // }
-
-        // public void DeleteContact(Contact contact)
-        // {
-        //     // ta bort kontakt från listan
-        // }
-
-
-        // spara
+         public void SaveContacts()
+        {
+            // bara spara till fil
+            _fileService.Save(Contacts);
+         }
         public void AddContact(Contact contact)
         {
-            if (contact is null) return;
-            var contacts = _fileService.Load();
-            contacts.Add(contact);
-            _fileService.Save(contacts);
-            Console.WriteLine($"Contact {contact.Name} has been added");
-        }
-        // skapa kontakt i konsollen
-        public void AddContactFromConsole()
-        {
-            var contact = AddContactConsole.CreateContactFromConsole();
-            AddContact(contact);
-        }
-        // uppdatera
-        public void UpdateContactFromConsole()
-        {
-            var contacts = _fileService.Load();
-            bool changed = UpdateContactConsole.RunInteractive(contacts);
-            if (changed) _fileService.Save(contacts);
-        }
+            // lägg till kontakt i listan
+            Contacts.Add(contact);
+            _fileService.Save(Contacts);
+         }
 
-        public bool UpdateContactByEmail(string emailToFind, Contact updated)
+         public void DeleteContact(Contact contact)
         {
-            var contacts = _fileService.Load();
-            bool ok = UpdateContactConsole.TryUpdateByEmail(contacts, emailToFind, updated);
-            if (ok)
-            {
-                _fileService.Save(contacts);
-                Console.WriteLine($"Contact with email: {emailToFind} has been updated.");
-            }
-            return ok;
-        }
-        // ta bort
-        public void DeleteContactFromConsole()
-        {
-            var contacts = _fileService.Load();
-            bool deleted = DeleteContactConsole.RunInteractive(contacts);
-            if (deleted)
-            {
-                _fileService.Save(contacts);
-                Console.WriteLine("Contact was removed and the list was updated.");
-            }
-        }
-
-        public bool DeleteContactByEmail(string emailToFind)
-        {
-            var contacts = _fileService.Load();
-            bool ok = DeleteContactConsole.TryDeleteByEmail(contacts, emailToFind);
-            if (ok)
-            {
-                _fileService.Save(contacts);
-                Console.WriteLine($"Contact with email: {emailToFind} has been removed.");
-            }
-            else
-            {
-                Console.WriteLine($"No contact found with this email address: {emailToFind}");
-            }
-            return ok;
-        }
+            // ta bort kontakt från listan
+            Contacts.Remove(contact);
+            _fileService.Save(Contacts);
+         }
 
         // söka
-        // BEHÅLL DENNA SOM DEN ÄR
         public List<Contact> SearchContacts(string term)
         {
             var contacts = _fileService.Load();
@@ -126,17 +61,6 @@ namespace AddressBook.Core.Services
             (c.Street?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.PostalCode?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false)
         )];
-        }
-
-        //hämta ut alla kontakter
-        public void ShowAllContacts()
-        {
-            var contacts = _fileService.Load();
-            Console.WriteLine("List of all contacts:");
-            foreach (var contact in contacts)
-            {
-                Console.WriteLine($"{contact.Name}, {contact.Email}, {contact.PhoneNumber}");
-            }
         }
     }
 }
