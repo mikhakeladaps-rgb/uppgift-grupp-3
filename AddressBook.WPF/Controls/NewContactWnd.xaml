@@ -1,0 +1,44 @@
+﻿<Window x:Class="AddressBook.WPF.Controls.NewContactWnd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AddressBook.WPF.Controls"
+        xmlns:ctrl="clr-namespace:AddressBook.WPF.Controls"
+        xmlns:vm="clr-namespace:AddressBook.WPF.ViewModels"
+        mc:Ignorable="d"
+        Background="{StaticResource gradientBlack}"
+        Title="Ny kontakt" Height="450" Width="800">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Rubrik -->
+        <TextBlock Text="Lägg till ny kontakt"
+               Foreground="White"
+               FontSize="24"
+               HorizontalAlignment="Center"/>
+
+        <!-- Detaljvy -->
+        <!--<ctrl:ContactDetailsCtrl Grid.Row="1" />-->
+        <ctrl:ContactDetailsCtrl Grid.Row="1"
+                     DataContext="{Binding NewContact}"
+                     SaveCommand="{Binding SaveNewContactCommand}" />
+
+        <!-- Knapppanel -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,20,20">
+            <Button Style="{StaticResource DarkGreenButton}" Content="Spara kontakt"
+                Command="{Binding SaveNewContactCommand}"
+                Width="120" Height="30"/>
+            <Button Style="{StaticResource RedButton}" Content="Avbryt"
+                Command="{Binding CancelCommand}"
+                Width="120" Height="30" Margin="30 0 0 0"/>
+        </StackPanel>
+
+    </Grid>
+
+</Window>

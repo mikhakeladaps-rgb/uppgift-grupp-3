@@ -3,10 +3,151 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AddressBook.WPF.ViewModels"
+        xmlns:ctrl="clr-namespace:AddressBook.WPF.Controls"
+        xmlns:conv="clr-namespace:AddressBook.WPF.Converters"
         xmlns:local="clr-namespace:wpfApp"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <TextBlock Text="Hello World from WPF!" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="24"/>
+        Background="{StaticResource gradientBlue}"
+        Title="AddressBook.WPF" Height="770" Width="900">
+
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <Window.Resources>
+        <conv:NullToBoolConverter x:Key="NullToBoolConverter" />
+    </Window.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2"
+                    HorizontalAlignment="Center">
+            <Button Style="{StaticResource BlueButton}"
+                    Margin="20 0 0 0"
+                    Width="120" Height="30" Content="Ny kontakt"
+                    Command="{Binding NewContactCommand}"/>
+            <Button Style="{StaticResource BlackButton}"
+                    Margin="150 0 0 0"
+                    Width="120" Height="30" Content="Avsluta"
+                    Command="{Binding QuitCommand}"/>
+        </StackPanel>
+
+        <!-- Search box -->
+        <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0 10 0 10">
+            <TextBlock Text="🔍Sök:" VerticalAlignment="Center" Margin="8,0" Foreground="White" FontSize="20"/>
+            <TextBox BorderThickness="0" FontSize="20"
+             Width="200" Height="30"
+             Padding="4,0"
+             Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+
+        <!-- Contact List Master -->
+        <ListBox ItemsSource="{Binding ContactsView}"
+                 SelectedItem="{Binding SelectedContact}"
+                 Background="Transparent"
+                 BorderThickness="0"
+                 Grid.Row="2"
+                 Margin="0,0,0,-6"
+                 Padding="0"
+                 VirtualizingStackPanel.IsVirtualizing="False"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+            <!-- Style scrollviewer-->
+            <ListBox.Resources>
+                <!-- Style för ScrollBar -->
+                <Style TargetType="ScrollBar">
+                    <Setter Property="Width" Value="6"/>
+                    <!-- smal scrollbar -->
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="ScrollBar">
+                                <Grid x:Name="Root" Background="Transparent" Width="{TemplateBinding Width}">
+                                    <Track x:Name="PART_Track" 
+                                        IsDirectionReversed="true"
+                                        Focusable="false">
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.LineUpCommand"
+                                                Opacity="0" IsEnabled="False"/>
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.LineDownCommand"
+                                                Opacity="0" IsEnabled="False"/>
+                                        </Track.IncreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Thumb Background="#888"
+                                                   Opacity="0.5"
+                                                   Margin="0,2"/>
+                                        </Track.Thumb>
+                                    </Track>
+                                </Grid>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter TargetName="Root" Property="Background" Value="#EEE"/>
+                                        <Setter TargetName="PART_Track" Property="Thumb.Opacity" Value="0.8"/>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <!-- Dölj horisontell scrollbar -->
+                <Style TargetType="ScrollViewer">
+                    <Setter Property="HorizontalScrollBarVisibility" Value="Disabled"/>
+                    <Setter Property="VerticalScrollBarVisibility" Value="Auto"/>
+                </Style>
+            </ListBox.Resources>
+
+            <!-- Style for items -->
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="ListBoxItem">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="Padding" Value="0"/>
+                    <Setter Property="Margin" Value="0,0,0,6"/>
+                </Style>
+            </ListBox.ItemContainerStyle>
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Margin="0"/>
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ctrl:ContactCardCtrl DataContext="{Binding}" />
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+
+        <!-- Contact List Detail -->
+        <StackPanel Grid.Column="1" Grid.Row="2" Margin="20">
+            <ContentControl Content="{Binding SelectedContact}">
+                <ContentControl.ContentTemplate>
+                    <DataTemplate>
+                        <ctrl:ContactDetailsCtrl/>
+                    </DataTemplate>
+                </ContentControl.ContentTemplate>
+            </ContentControl>
+
+            <Button Style="{StaticResource RedButton}" Content="Radera kontakt"
+        HorizontalAlignment="Left"
+        Width="120" Height="30" Margin="160,0,0,0"
+        Command="{Binding DataContext.DeleteContactCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+        IsEnabled="{Binding DataContext.SelectedContact, RelativeSource={RelativeSource AncestorType=Window}, Converter={StaticResource NullToBoolConverter}}" />
+        </StackPanel>
+        
     </Grid>
 </Window>

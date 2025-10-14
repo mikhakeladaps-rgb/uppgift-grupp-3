@@ -5,7 +5,7 @@ namespace AddressBook.Core.Services
 {
     public class ContactManager
     {
-        private readonly FileService _fileService;
+        private readonly FileService _fileService = new FileService();
 
         public List<Contact> Contacts { get; set; } = new List<Contact>();
         public Contact GetContactById(int id) => Contacts.FirstOrDefault(c => c.Id == id)!;
@@ -49,18 +49,20 @@ namespace AddressBook.Core.Services
         // söka
         public List<Contact> SearchContacts(string term)
         {
-            var contacts = _fileService.Load();
-            if (string.IsNullOrWhiteSpace(term))
-                return [.. contacts];
+
+
+
             term = term.Trim();
-            return [.. contacts.Where(c =>
+            List<Contact> results = Contacts.Where(c =>
             (c.Name?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.City?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.Email?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.PhoneNumber?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.Street?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false) ||
             (c.PostalCode?.Contains(term, StringComparison.OrdinalIgnoreCase) ?? false)
-        )];
+        ).ToList();
+
+            return results;
         }
     }
 }
