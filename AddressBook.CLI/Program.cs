@@ -14,7 +14,6 @@ namespace AddressBook.CLI
             {
                 int choice = UIHandler.ShowMenu();
 
-
                 switch (choice)
                 {
                     case 1:
@@ -53,12 +52,13 @@ namespace AddressBook.CLI
 
         static void ShowAllContacts()
         {
-           UIHandler.ShowContacts(contactManager.Contacts);
+            UIHandler.ShowContacts(contactManager.Contacts);
         }
         static void SearchContacts()
         {
-            string term = UIHandler.Ask("Ange sökterm: ");
+            string term = UIHandler.Ask("Ange sökterm");
             var results = contactManager.SearchContacts(term);
+            UIHandler.Clear();
             UIHandler.ShowContacts(results);
         }
 
@@ -73,12 +73,12 @@ namespace AddressBook.CLI
             var contact = new Contact
             {
                 Id = nextId,
-                Name = UIHandler.Ask("Namn: "),
-                Street = UIHandler.Ask("Gatuadress: "),
-                PostalCode = UIHandler.Ask("Postnummer: "),
-                City = UIHandler.Ask("Stad: "),
-                PhoneNumber = UIHandler.Ask("Telefonnummer: "),
-                Email = UIHandler.Ask("Email: "),
+                Name = UIHandler.Ask("Namn"),
+                Street = UIHandler.Ask("Gatuadress"),
+                PostalCode = UIHandler.Ask("Postnummer"),
+                City = UIHandler.Ask("Stad"),
+                PhoneNumber = UIHandler.Ask("Telefonnummer"),
+                Email = UIHandler.Ask("Email"),
             };
             contactManager.AddContact(contact);
             UIHandler.Print($"Kontakt {contact.Name} tillagd.");
@@ -87,7 +87,7 @@ namespace AddressBook.CLI
 
         static void RemoveContact()
         {
-            int id = UIHandler.AskForId("Ange ID för kontakten som ska tas bort (0 för att avbryta): ");
+            int id = UIHandler.AskForId("Ange ID för kontakten som ska tas bort (0 för att avbryta)");
             if (id == 0)
             {
                 UIHandler.Print("Åtgärden avbröts.");
@@ -117,7 +117,7 @@ namespace AddressBook.CLI
         }
         static void UpdateContact()
         {
-            int id = UIHandler.AskForId("Ange ID för kontakten som ska uppdateras (0 för att avbryta): ");
+            int id = UIHandler.AskForId("Ange ID för kontakten som ska uppdateras (0 för att avbryta)");
             if (id == 0)
             {
                 UIHandler.Print("Åtgärden avbröts.");

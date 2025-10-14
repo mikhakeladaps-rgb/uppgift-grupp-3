@@ -61,6 +61,7 @@ public static class UIHandler
 
     public static void ShowContact(Contact contact)
     {
+        Console.WriteLine();
         Console.WriteLine("Kontaktinformation:");
         Console.WriteLine($"Id: {contact.Id}");
         Console.WriteLine($"Namn: {contact.Name}");
@@ -71,6 +72,8 @@ public static class UIHandler
 
     public static void ShowContacts(List<Contact> contacts)
     {
+        Console.WriteLine();
+
         if (contacts.Count == 0)
         {
             Console.WriteLine("Inga kontakter hittades.");
@@ -78,6 +81,7 @@ public static class UIHandler
         }
 
         Console.WriteLine("Kontakter:");
+        Console.WriteLine("-------------------------------------------");
         foreach (var contact in contacts)
         {
             Console.WriteLine($"Id: {contact.Id}");
@@ -87,6 +91,8 @@ public static class UIHandler
             Console.WriteLine($"E-post: {contact.Email}");
             Console.WriteLine("-------------------------------------------");
         }
+
+        Console.WriteLine();
     }
 
     public static int GetId()
@@ -113,7 +119,7 @@ public static class UIHandler
         while (true)
         {
             var input = Console.ReadLine();
-            if (int.TryParse(input, out int id) && id > 0)
+            if (int.TryParse(input, out int id) && id >= 0)
                 return id;
             Console.Write("Ogiltigt val. Vänligen ange ett nummer: ");
         }
