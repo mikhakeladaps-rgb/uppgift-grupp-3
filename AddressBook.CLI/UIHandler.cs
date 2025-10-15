@@ -1,7 +1,10 @@
 using System;
 using AddressBook.Core.Models;
+
+// Hanterar all användarinteraktion via konsolen
 public static class UIHandler
 {
+    // Metod för att visa huvudmenyn och validera användarens val
     public static int ShowMenu()
     {
         Console.WriteLine("=== KONTAKTER ===");
@@ -14,6 +17,8 @@ public static class UIHandler
         Console.Write("Välj ett alternativ: ");
         return ValidateMenuChoice(1, 6);
     }
+
+    // Validera menyval
     private static int ValidateMenuChoice(int min, int max)
     {
         while (true)
@@ -29,23 +34,28 @@ public static class UIHandler
             Console.ResetColor();
             return 0;
         }
-    }  
+    }
+
+    // Metod för att visa en titel
     public static void ShowTitle(string title)
     {
         Console.WriteLine();
         Console.WriteLine("--- " + title + " ---");
     }
 
-
+    // Metod för att skriva ut text
     public static void Print(string text)
     {
         Console.WriteLine(text);
     }
 
+    // Metod för att skriva ut en tom rad
     public static void PrintLine()
     {
         Console.WriteLine();
     }
+
+    // Metod för att vänta på användarens input innan programmet fortsätter
     public static void Wait()
     {
         Console.WriteLine();
@@ -54,11 +64,13 @@ public static class UIHandler
         Console.Clear();
     }
 
+    // Metod för att rensa konsolen
     public static void Clear()
     {
         Console.Clear();
     }
 
+    // Metod för att visa en kontakt
     public static void ShowContact(Contact contact)
     {
         Console.WriteLine();
@@ -70,6 +82,7 @@ public static class UIHandler
         Console.WriteLine($"E-post: {contact.Email}");
     }
 
+    // Metod för att visa en lista med kontakter, alla eller sökresultat
     public static void ShowContacts(List<Contact> contacts)
     {
         Console.WriteLine();
@@ -95,24 +108,15 @@ public static class UIHandler
         Console.WriteLine();
     }
 
-    public static int GetId()
-    {
-        Console.Write("Ange kontaktens Id: ");
-
-        if (int.TryParse(Console.ReadLine(), out int id) && id > 0)
-        {
-            return id;
-        }
-        Console.WriteLine("Ogiltigt val. Vänligen ange ett nummer.");
-        return 0;
-    }
-
+    // Metod för att fråga användaren om input och returnera svaret
     public static string Ask(string question)
     {
         Console.Write(question + ": ");
         return Console.ReadLine() ?? string.Empty;
 
     }
+
+    // Metod för att fråga användaren om ett giltigt Id och returnera det
     public static int AskForId(string question)
     {
         Console.Write(question + ": ");
@@ -124,6 +128,8 @@ public static class UIHandler
             Console.Write("Ogiltigt val. Vänligen ange ett nummer: ");
         }
     }
+
+    // Metod för att bekräfta en åtgärd med ja eller nej
     public static bool Confirm(string question)
     {
         Console.Write(question + " (j/n): ");
@@ -136,5 +142,4 @@ public static class UIHandler
         }
 
     }
-    
 }

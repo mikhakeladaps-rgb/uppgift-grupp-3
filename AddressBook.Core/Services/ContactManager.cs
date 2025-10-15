@@ -3,18 +3,27 @@ using AddressBook.Core.Models;
 
 namespace AddressBook.Core.Services
 {
+    // Hanterar kontakter: läs, skriv, lägg till, ta bort, sök
     public class ContactManager
     {
+        // instans av filhantering
         private readonly FileService _fileService = new FileService();
 
+        // lista av kontakter
         public List<Contact> Contacts { get; set; } = new List<Contact>();
-        public Contact GetContactById(int id) => Contacts.FirstOrDefault(c => c.Id == id)!;
-         public ContactManager()
-         {
-             LoadContacts();
-         }
 
-         public void LoadContacts()
+        // hämta kontakt via Id
+        public Contact GetContactById(int id) => Contacts.FirstOrDefault(c => c.Id == id)!;
+
+
+        // konstruktor
+        public ContactManager()
+        {
+            LoadContacts();
+        }
+
+        // ladda kontakter från fil
+        public void LoadContacts()
         {
             // bara läsa från fil och sortera på Id
             var loaded = _fileService.Load();
@@ -25,28 +34,32 @@ namespace AddressBook.Core.Services
                 Contacts.Add(contact);
             }
 
-         }
+        }
 
-         public void SaveContacts()
+        // spara kontakter till fil
+        public void SaveContacts()
         {
             // bara spara till fil
             _fileService.Save(Contacts);
-         }
+        }
+
+        // lägg till kontakt
         public void AddContact(Contact contact)
         {
             // lägg till kontakt i listan
             Contacts.Add(contact);
             _fileService.Save(Contacts);
-         }
+        }
 
-         public void DeleteContact(Contact contact)
+        // ta bort kontakt
+        public void DeleteContact(Contact contact)
         {
             // ta bort kontakt från listan
             Contacts.Remove(contact);
             _fileService.Save(Contacts);
-         }
+        }
 
-        // söka
+        // sök kontakter
         public List<Contact> SearchContacts(string term)
         {
 
@@ -66,4 +79,3 @@ namespace AddressBook.Core.Services
         }
     }
 }
-    // i denna klass sker anrop till FileService för att skriva och läsa textfil med "data"

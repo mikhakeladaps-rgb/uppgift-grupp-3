@@ -3,9 +3,13 @@ using AddressBook.Core.Models;
 
 namespace AddressBook.Core.Services
 {
-    public class FileService    // hantera läsning och skrivning till textfil
+    // Hanterar filoperationer: läs och skriv kontakter till/från JSON-fil
+    public class FileService
     {
+        // sökväg till datafil
         private readonly string _dataFilePath;
+
+        // konstruktor med valfri anpassad sökväg
         public FileService(string? customPath = null)
         {
             _dataFilePath = !string.IsNullOrWhiteSpace(customPath)
@@ -13,8 +17,7 @@ namespace AddressBook.Core.Services
                 : Path.Combine(AppContext.BaseDirectory, "Data", "contacts.json");
         }
 
-        // load from file
-
+        // läs kontakter från fil
         public List<Contact> Load()
         {
             try
@@ -32,7 +35,7 @@ namespace AddressBook.Core.Services
             }
         }
 
-        // save to file
+        // spara kontakter till fil
         public void Save(List<Contact> contacts)
         {
             try

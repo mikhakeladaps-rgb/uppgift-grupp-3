@@ -6,6 +6,7 @@ namespace AddressBook.CLI
     {
         private static ContactManager contactManager = new ContactManager();
 
+        // Huvudloop
         static void Main(string[] args)
         {
             bool running = true;
@@ -49,11 +50,13 @@ namespace AddressBook.CLI
             }
         }
 
-
+        // Menyval: Visa alla kontakter
         static void ShowAllContacts()
         {
             UIHandler.ShowContacts(contactManager.Contacts);
         }
+
+        // Menyval: Sök kontakter
         static void SearchContacts()
         {
             string term = UIHandler.Ask("Ange sökterm");
@@ -62,6 +65,7 @@ namespace AddressBook.CLI
             UIHandler.ShowContacts(results);
         }
 
+        // Menyval: Lägg till kontakt
         static void AddContact()
         {
             UIHandler.ShowTitle("Lägg till kontakt");
@@ -85,6 +89,7 @@ namespace AddressBook.CLI
             UIHandler.Wait();
         }
 
+        // Menyval: Ta bort kontakt
         static void RemoveContact()
         {
             int id = UIHandler.AskForId("Ange ID för kontakten som ska tas bort (0 för att avbryta)");
@@ -115,6 +120,8 @@ namespace AddressBook.CLI
             UIHandler.Print($"Kontakt {contact.Name} borttagen.");
             UIHandler.Wait();
         }
+
+        // Menyval: Uppdatera kontakt
         static void UpdateContact()
         {
             int id = UIHandler.AskForId("Ange ID för kontakten som ska uppdateras (0 för att avbryta)");
